@@ -1,0 +1,34 @@
+<?php
+/**
+ * @var array{id: int, nickname: string, email: string} $user
+ * @var array{nickname: string, email: string} $values
+ * @var array<string, string> $errors
+ * */
+?>
+
+<h1>Edit user</h1>
+
+<form action="/users/<?= $user['id'] ?>" method="post">
+    <input type="hidden" name="_METHOD" value="PATCH" />
+    <p>
+        <label>
+            Nickname
+            <input type="text" name="nickname" value="<?= htmlspecialchars($values['nickname']) ?>" />
+        </label>
+        <?php if (isset($errors['nickname'])) { ?>
+            <span class="error"><?= htmlspecialchars($errors['nickname']) ?></span>
+        <?php } ?>
+    </p>
+    <p>
+        <label>
+            Email
+            <input type="email" name="email" value="<?= htmlspecialchars($values['email']) ?>" />
+        </label>
+        <?php if (isset($errors['email'])) { ?>
+            <span class="error"><?= htmlspecialchars($errors['email']) ?></span>
+        <?php } ?>
+    </p>
+    <input type="submit" value="Save" />
+</form>
+
+<p><a href="/users/<?= $user['id'] ?>">Cancel</a></p>

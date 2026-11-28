@@ -1,0 +1,23 @@
+<?php
+/**
+ * @var array{email: string} $values
+ * @var array<string, string> $errors
+ * */
+?>
+
+<h1>Log in</h1>
+
+<form action="/login" method="post">
+    <p>
+        <label>
+            Email
+            <input type="email" name="email" value="<?= htmlspecialchars($values['email']) ?>" />
+        </label>
+        <?php if (isset($errors['email'])) { ?>
+            <span class="error"><?= htmlspecialchars($errors['email']) ?></span>
+        <?php } ?>
+    </p>
+    <input type="submit" value="Log in" />
+</form>
+
+<p><a href="/users">Cancel</a></p>
